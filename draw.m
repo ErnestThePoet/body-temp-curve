@@ -62,7 +62,7 @@ end
 im=image(imageData);
 hold on;
 plot(fitX,fitY,'Color','r','LineWidth',1.5);
-title("Ernest's 体温监测图");
+title("体温监测图");
 xlabel("时间");
 ylabel("体温/℃");
 ylim([imageYLowLim,imageH]);
@@ -74,8 +74,3 @@ yticks([36,36.5,37,37.5,38,38.5,39,39.5,40]*tempScale);
 yticklabels(["36","36.5","37","37.5","38","38.5","39","39.5","40"]);
 xticks([18,24,30,36,42,48,54,60,66,72,78,84,90]*60-initialTime);
 xticklabels(["18:00","12月26日","6:00","12:00","18:00","12月27日","6:00","12:00","18:00","12月28日","6:00","12:00","18:00"]);
-
-
-
-
-

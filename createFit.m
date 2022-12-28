@@ -5,5 +5,3 @@ function [fitresult, gof] = createFit(x, y)
 ft = 'pchipinterp';
 
 [fitresult, gof] = fit( xData, yData, ft, 'Normalize', 'on' );
-
-
