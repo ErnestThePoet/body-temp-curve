@@ -42,7 +42,7 @@ fitY=fitF(fitX);
 
 % Image generating
 imageW=maxTimes;
-imageH=maxTemps*1.005;
+imageH=maxTemps*1.01;
 imageYLowLim=36*tempScale;
 imageData=zeros(ceil(imageH),imageW);
 
@@ -61,8 +61,8 @@ end
 
 im=image(imageData);
 hold on;
-plot(fitX,fitY,'Color','r','LineWidth',2);
-title("体温监测图");
+plot(fitX,fitY,'Color','r','LineWidth',1.5);
+title("Ernest's 体温监测图");
 xlabel("时间");
 ylabel("体温/℃");
 ylim([imageYLowLim,imageH]);
