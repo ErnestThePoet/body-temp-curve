@@ -1,8 +1,13 @@
 clear;
 clc;
+
+% Read data
+
 fid=fopen("./rec.txt","r");
 data=textscan(fid,"%d %s %f","Delimiter"," ");
 fclose(fid);
+
+% Prepare data
 
 count=length(data{1});
 
@@ -40,7 +45,8 @@ fitF=createFit(times,temps);
 fitX=linspace(minTimes,maxTimes,1000);
 fitY=fitF(fitX);
 
-% Image generating
+% Prepare image data
+
 imageW=maxTimes;
 imageH=maxTemps*1.01;
 imageYLowLim=36*tempScale;
@@ -58,6 +64,8 @@ for i=1:imageW
     % Fill empty color value
     imageData(colorBoundaryY+1:imageH,i)=NaN;
 end
+
+% Draw image
 
 im=image(imageData);
 hold on;
