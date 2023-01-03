@@ -49,14 +49,14 @@ imageData=zeros(ceil(imageH),imageW);
 for i=1:imageW
     fitValue=fitF(i);
     colorBoundaryY=round(fitValue);
-    % Map value to [0,84](red-green range in hsv)
-    imageValue=84*(1-(fitValue-minTemps)/(maxTemps-minTemps));
-    for j=imageYLowLim:colorBoundaryY
-        imageData(j,i)=imageValue;
-    end
-    for j=colorBoundaryY+1:imageH
-        imageData(j,i)=NaN;
-    end
+    % Map value to [0,85](red-green range in hsv)
+    imageValue=85*(1-(fitValue-minTemps)/(maxTemps-minTemps));
+    
+    % Fill color value
+    imageData(imageYLowLim:colorBoundaryY,i)=imageValue;
+    
+    % Fill empty color value
+    imageData(colorBoundaryY+1:imageH,i)=NaN;
 end
 
 im=image(imageData);
@@ -67,7 +67,8 @@ xlabel("时间");
 ylabel("体温/℃");
 ylim([imageYLowLim,imageH]);
 set(gca,'YDir','normal');
-set(im,'alphadata',~isnan(imageData))
+% NaN values are transparent
+set(im,'alphadata',~isnan(imageData));
 grid on;
 colormap hsv;
 yticks([36,36.5,37,37.5,38,38.5,39,39.5,40]*tempScale);
